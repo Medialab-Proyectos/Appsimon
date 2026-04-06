@@ -49,12 +49,12 @@ export function BottomNav() {
       <div
         className="pointer-events-auto h-14 rounded-[12px] flex overflow-visible"
         style={{
-          width: "min(321px, calc(100% - 48px))",
+          width: "calc(100% - 48px)",
           ...navBg,
         }}
       >
         {/* ── T crédito ──────────────────────────────── */}
-        <button className="flex-1 flex flex-col items-center justify-end pb-1.5 gap-0.5 min-w-0">
+        <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
           <CreditCard className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
           <span
             className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
@@ -65,7 +65,7 @@ export function BottomNav() {
         </button>
 
         {/* ── Beneficios ─────────────────────────────── */}
-        <button className="flex-1 flex flex-col items-center justify-end pb-1.5 gap-0.5 min-w-0">
+        <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
           <Gift className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
           <span
             className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
@@ -108,7 +108,7 @@ export function BottomNav() {
         </button>
 
         {/* ── Mis créditos ───────────────────────────── */}
-        <button className="flex-1 flex flex-col items-center justify-end pb-1.5 gap-0.5 min-w-0">
+        <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
           <HandCoins className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
           <span
             className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
@@ -119,7 +119,7 @@ export function BottomNav() {
         </button>
 
         {/* ── Opciones ───────────────────────────────── */}
-        <button className="flex-1 flex flex-col items-center justify-end pb-1.5 gap-0.5 min-w-0">
+        <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
           <Settings className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
           <span
             className="text-[10px] text-[#828282] leading-none truncate w-full text-center"

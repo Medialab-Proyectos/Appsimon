@@ -1,6 +1,6 @@
 "use client"
 
-import { Headphones, Bell, CircleUserRound } from "lucide-react"
+import { Headphones, CircleUserRound } from "lucide-react"
 
 const SIMON_LOGO_TOP = "https://www.figma.com/api/mcp/asset/006c3a59-a3eb-41e2-8c84-1de1dd747aa9"
 const SIMON_LOGO_BOTTOM = "https://www.figma.com/api/mcp/asset/08256b12-670a-4fb6-bc57-45e58d261fb1"
@@ -37,11 +37,7 @@ export function TopHeader() {
           <button className="w-8 h-8 rounded-full flex items-center justify-center">
             <Headphones className="w-[18px] h-[18px] text-[#4f4f4f]" strokeWidth={1.5} />
           </button>
-          <button className="w-8 h-8 rounded-full flex items-center justify-center relative">
-            <Bell className="w-[18px] h-[18px] text-[#4f4f4f]" strokeWidth={1.5} />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#00f1c7] rounded-full" />
-          </button>
-          <button className="w-8 h-8 rounded-full flex items-center justify-center">
+<button className="w-8 h-8 rounded-full flex items-center justify-center">
             <CircleUserRound className="w-[18px] h-[18px] text-[#4f4f4f]" strokeWidth={1.5} />
           </button>
         </div>

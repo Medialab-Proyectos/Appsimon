@@ -17,27 +17,27 @@ interface ShortcutItem {
 
 const shortcuts: ShortcutItem[] = [
   {
-    icon: <MapPin className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    icon: <MapPin className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
     label: "Localización",
   },
   {
-    icon: <CircleDollarSign className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    icon: <CircleDollarSign className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
     label: "Simon Pay",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    icon: <ShieldCheck className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
     label: "Seguros",
   },
   {
-    icon: <FolderOpen className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    icon: <FolderOpen className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
     label: "Guantera",
   },
   {
-    icon: <Handshake className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    icon: <Handshake className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
     label: "Convenios",
   },
   {
-    icon: <Wrench className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    icon: <Wrench className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
     label: "Asistencias",
   },
 ]

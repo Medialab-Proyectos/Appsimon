@@ -215,7 +215,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 
       {/* ── Plate + TAG badge ── */}
       <div className="absolute top-[104px] left-1/2 -translate-x-1/2 flex items-start justify-between w-[247px]">
-        <div className="w-[109px]">
+        <div className="w-[181px]">
           <p
             className="text-[20px] text-black leading-tight"
             style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 900 }}
@@ -223,21 +223,21 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
             {vehicle.plate}
           </p>
           <p
-            className="text-[10px] text-[#6d6d6d] leading-snug text-right"
+            className="text-[10px] text-[#6d6d6d] leading-snug overflow-hidden text-ellipsis whitespace-nowrap"
             style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}
           >
             {vehicle.model}
           </p>
         </div>
         {vehicle.tagActive ? (
-          <div className="bg-[#e7fffa] border border-[#00f1c7] rounded-[8px] px-2 h-[15px] flex items-center mt-1">
-            <span className="text-[9px] text-[#049e83]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
+          <div className="bg-[#e7fffa] border border-[#00f1c7] rounded-[8px] px-[3px] h-[15px] flex items-center justify-center w-[66px] mt-1 shrink-0">
+            <span className="text-[9px] text-[#049e83] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
               TAG ACTIVO
             </span>
           </div>
         ) : (
-          <div className="bg-[#d1d1d1] border border-[#5d5d5d] rounded-[8px] px-2 h-[15px] flex items-center mt-1">
-            <span className="text-[9px] text-[#5d5d5d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
+          <div className="bg-[#d1d1d1] border border-[#5d5d5d] rounded-[8px] px-[3px] h-[15px] flex items-center justify-center w-[72px] mt-1 shrink-0">
+            <span className="text-[9px] text-[#5d5d5d] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
               TAG INACTIVO
             </span>
           </div>
@@ -247,10 +247,15 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       {/* ── Pico y placa ── */}
       <div className="absolute top-[154px] left-1/2 -translate-x-1/2 flex items-center gap-2 w-[245px] bg-white/10 rounded px-2 h-[32px]">
         <img src={PICO_ICON} alt="" className="h-6 w-[14px] shrink-0 object-contain" />
-        <div className="flex items-center gap-1 min-w-0">
-          <span className="text-[10px] text-[#6d6d6d] shrink-0" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
-            Pico y placa:
-          </span>
+        <div className="flex items-center justify-between flex-1 min-w-0">
+          <div className="flex flex-col leading-none shrink-0">
+            <span className="text-[8px] text-[#6d6d6d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
+              Pico y placa
+            </span>
+            <span className="text-[10px] text-[#6d6d6d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
+              BOGOTÁ
+            </span>
+          </div>
           {vehicle.hasRestriction ? (
             <span className="text-[11px] text-[#d62d30] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 900 }}>
               TIENES RESTRICCIÓN
@@ -283,18 +288,18 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 
       {/* ── Recorrido + Guantera ── */}
       <div className="absolute top-[224px] left-1/2 -translate-x-1/2 flex items-stretch gap-4 w-[247px] h-[31px]">
-        <div className="flex-1 bg-white border border-[#00f1c7] rounded-[8px] flex flex-col items-center justify-center px-1">
-          <div className="flex items-center gap-1">
-            <img src={RECORRIDO_ICON} alt="" className="w-3.5 h-3.5 object-contain" />
-            <span className="text-[8px] text-[#6d6d6d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
+        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1 px-1" style={{ border: "0.5px solid #00f1c7" }}>
+          <img src={RECORRIDO_ICON} alt="" className="w-3.5 h-3.5 object-contain shrink-0" />
+          <div className="flex flex-col items-center leading-none">
+            <span className="text-[8px] text-[#6d6d6d] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
               Recorrido de hoy:
             </span>
+            <span className="text-[12px] text-black" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
+              {vehicle.todayDistance}
+            </span>
           </div>
-          <span className="text-[12px] text-black leading-tight" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
-            {vehicle.todayDistance}
-          </span>
         </div>
-        <div className="flex-1 bg-white border border-[#00f1c7] rounded-[8px] flex items-center justify-center gap-1 px-1">
+        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1 px-1" style={{ border: "0.5px solid #00f1c7" }}>
           <FolderOpen className="w-3.5 h-3.5 text-[#6d6d6d] shrink-0" strokeWidth={1.5} />
           <span className="text-[12px] text-black" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 300 }}>
             Guantera
@@ -303,7 +308,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       </div>
 
       {/* ── Ver detalles ── */}
-      <div className="absolute top-[268px] left-1/2 -translate-x-1/2 w-[104px] h-[22px] bg-[#e7fffa] border border-[#00f1c7] rounded-[11px] flex items-center justify-center">
+      <div className="absolute top-[268px] left-1/2 -translate-x-1/2 w-[104px] h-[22px] bg-[#e7fffa] rounded-[11px] flex items-center justify-center" style={{ border: "0.5px solid #00f1c7" }}>
         <span className="text-[12px] text-[#006257] font-semibold" style={{ fontFamily: '"Inter", sans-serif', letterSpacing: "-0.015em" }}>
           Ver detalles
         </span>
