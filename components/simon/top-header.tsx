@@ -44,7 +44,7 @@ export function TopHeader() {
       </div>
 
       {/* Simon Logo + Add Vehicle row */}
-      <div className="flex items-center justify-between px-6 pb-3">
+      <div className="flex items-center justify-between px-6 pt-2 pb-3">
         <div className="relative h-9 w-[89px]">
           <img
             src={SIMON_LOGO_TOP}

@@ -218,7 +218,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
         <div className="w-[181px]">
           <p
             className="text-[20px] text-black leading-tight"
-            style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 900 }}
+            style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}
           >
             {vehicle.plate}
           </p>
@@ -248,7 +248,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       <div className="absolute top-[154px] left-1/2 -translate-x-1/2 flex items-center gap-2 w-[245px] bg-white/10 rounded px-2 h-[32px]">
         <img src={PICO_ICON} alt="" className="h-6 w-[14px] shrink-0 object-contain" />
         <div className="flex items-center justify-between flex-1 min-w-0">
-          <div className="flex flex-col leading-none shrink-0">
+          <div className="flex flex-col gap-[2px] shrink-0">
             <span className="text-[8px] text-[#6d6d6d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
               Pico y placa
             </span>
