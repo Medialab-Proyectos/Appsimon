@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">App Simon</string>
+    <string name="title_activity_main">App Simon</string>
+    <string name="package_name">com.appsimon.app</string>
+    <string name="custom_url_scheme">com.appsimon.app</string>
+</resources>
