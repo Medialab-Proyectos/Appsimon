@@ -6,7 +6,8 @@ const config: CapacitorConfig = {
   webDir: 'out',
   server: {
     url: 'https://appsimon.vercel.app/',
-    cleartext: true
+    cleartext: true,
+    allowNavigation: ['appsimon.vercel.app', '*.vercel.app']
   }
 };
 
