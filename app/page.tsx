@@ -6,21 +6,33 @@ import { ShortcutGrid } from "@/components/simon/shortcut-grid"
 import { BottomNav } from "@/components/simon/bottom-nav"
 
 export default function SimonApp() {
+  /*
+   * Layout strategy:
+   *  - Container fills the dynamic viewport height (dvh), falls back to 100vh.
+   *  - Content column is padded at the bottom to clear the floating nav bar:
+   *      56px (nav height) + max(28px, safe-area) + 16px visual gap = ~100px min.
+   *  - BottomNav is absolute-positioned so it truly floats and never shifts content.
+   *  - VehicleCarousel is flex-1 and scales its card via ResizeObserver.
+   *  - ShortcutGrid is shrink-0 (fixed height).
+   */
   return (
-    <div className="h-dvh bg-gray-50 flex flex-col overflow-hidden">
-      {/* Top Header */}
-      <TopHeader />
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-        {/* Vehicle Card Carousel */}
-        <VehicleCarousel />
-        
-        {/* Shortcut Grid */}
-        <ShortcutGrid />
+    <div className="bg-[#fafafa] relative overflow-hidden" style={{ height: "100dvh" }}>
+      {/* Scrollable content — bottom padding reserves room for the floating nav */}
+      <div
+        className="absolute inset-0 flex flex-col"
+        style={{
+          paddingBottom:
+            "calc(56px + 16px + max(28px, calc(28px + env(safe-area-inset-bottom))))",
+        }}
+      >
+        <TopHeader />
+        <div className="flex-1 flex flex-col min-h-0">
+          <VehicleCarousel />
+          <ShortcutGrid />
+        </div>
       </div>
 
-      {/* Bottom Navigation */}
+      {/* Floating nav — overlays the content */}
       <BottomNav />
     </div>
   )

@@ -1,6 +1,13 @@
 "use client"
 
-import { MapPin, DollarSign, Shield, Folder, Handshake, HeartPulse } from "lucide-react"
+import {
+  MapPin,
+  CircleDollarSign,
+  ShieldCheck,
+  FolderOpen,
+  Handshake,
+  Wrench,
+} from "lucide-react"
 import { ReactNode } from "react"
 
 interface ShortcutItem {
@@ -9,26 +16,55 @@ interface ShortcutItem {
 }
 
 const shortcuts: ShortcutItem[] = [
-  { icon: <MapPin className="w-5 h-5" />, label: "Localizacion" },
-  { icon: <DollarSign className="w-5 h-5" />, label: "Simon Pay" },
-  { icon: <Shield className="w-5 h-5" />, label: "Seguros" },
-  { icon: <Folder className="w-5 h-5" />, label: "Guantera" },
-  { icon: <Handshake className="w-5 h-5" />, label: "Convenios" },
-  { icon: <HeartPulse className="w-5 h-5" />, label: "Asistencias" },
+  {
+    icon: <MapPin className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    label: "Localización",
+  },
+  {
+    icon: <CircleDollarSign className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    label: "Simon Pay",
+  },
+  {
+    icon: <ShieldCheck className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    label: "Seguros",
+  },
+  {
+    icon: <FolderOpen className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    label: "Guantera",
+  },
+  {
+    icon: <Handshake className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    label: "Convenios",
+  },
+  {
+    icon: <Wrench className="w-6 h-6 text-[#0f6b58]" strokeWidth={1.5} />,
+    label: "Asistencias",
+  },
 ]
+
+const btnStyle: React.CSSProperties = {
+  background: "radial-gradient(ellipse at 85% 4%, #ededed 0%, #fefefe 93%)",
+  boxShadow:
+    "6.08px 6.08px 14.6px rgba(0,0,0,0.1), inset 0px -2.4px 2.4px rgba(112,111,111,0.25), inset 0px 2.4px 2.4px white",
+}
 
 export function ShortcutGrid() {
   return (
-    <div className="shrink-0 px-4 py-2">
-      <div className="grid grid-cols-3 gap-2.5">
+    <div className="shrink-0 px-6 pt-3 pb-2">
+      <div className="grid grid-cols-3 gap-3">
         {shortcuts.map((shortcut, index) => (
           <button
             key={index}
-            className="flex flex-col items-center justify-center py-3.5 px-1 bg-white rounded-xl border border-gray-100 hover:bg-gray-50 active:bg-gray-100 transition-all"
-            style={{ boxShadow: '0 2px 6px rgba(0, 0, 0, 0.06)' }}
+            className="flex flex-col items-center justify-center h-[88px] rounded-[12px] gap-2 p-2 active:opacity-80 transition-opacity"
+            style={btnStyle}
           >
-            <div className="text-gray-500 mb-1.5">{shortcut.icon}</div>
-            <span className="text-[11px] text-gray-700 font-medium">{shortcut.label}</span>
+            {shortcut.icon}
+            <span
+              className="text-[12px] text-[#4f4f4f] font-medium leading-4 text-center"
+              style={{ fontFamily: '"Inter", sans-serif' }}
+            >
+              {shortcut.label}
+            </span>
           </button>
         ))}
       </div>
