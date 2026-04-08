@@ -22,23 +22,29 @@ export function TopHeader() {
         <div>
           <p
             className="text-[15px] text-[#4f4f4f] leading-snug"
-            style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}
+            style={{ fontWeight: 500 }}
           >
             Bienvenido/a
           </p>
           <p
             className="text-[18px] text-[#4f4f4f] leading-snug"
-            style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
-            Alejandra Diaz
+            Alejandra Díaz
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="w-8 h-8 rounded-full flex items-center justify-center">
-            <Headphones className="w-[18px] h-[18px] text-[#4f4f4f]" strokeWidth={1.5} />
+          <button
+            aria-label="Soporte y ayuda"
+            className="w-11 h-11 rounded-full flex items-center justify-center"
+          >
+            <Headphones className="w-[20px] h-[20px] text-[#4f4f4f]" strokeWidth={1.5} />
           </button>
-<button className="w-8 h-8 rounded-full flex items-center justify-center">
-            <CircleUserRound className="w-[18px] h-[18px] text-[#4f4f4f]" strokeWidth={1.5} />
+          <button
+            aria-label="Mi cuenta"
+            className="w-11 h-11 rounded-full flex items-center justify-center"
+          >
+            <CircleUserRound className="w-[20px] h-[20px] text-[#4f4f4f]" strokeWidth={1.5} />
           </button>
         </div>
       </div>
@@ -61,7 +67,7 @@ export function TopHeader() {
           className="px-4 h-8 text-[12px] font-medium text-[#0f6b58] rounded-xl whitespace-nowrap"
           style={neomorphicBtn}
         >
-          Agregar vehiculo
+          Agregar vehículo
         </button>
       </div>
     </div>

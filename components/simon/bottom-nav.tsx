@@ -25,7 +25,6 @@ const navBg: React.CSSProperties = {
 }
 
 const labelStyle: React.CSSProperties = {
-  fontFamily: '"Museo Sans", sans-serif',
   fontWeight: 700,
 }
 
@@ -54,21 +53,25 @@ export function BottomNav() {
         }}
       >
         {/* ── T crédito ──────────────────────────────── */}
-        <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
-          <CreditCard className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
-          <span
-            className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
+        <button
+          aria-label="Tarjeta de crédito"
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0"
+        >
+          <CreditCard className="w-5 h-5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <abbr
+            title="Tarjeta de crédito"
+            className="text-[11px] text-[#4f4f4f] leading-none truncate w-full text-center no-underline"
             style={labelStyle}
           >
-            T crédito
-          </span>
+            T. crédito
+          </abbr>
         </button>
 
         {/* ── Beneficios ─────────────────────────────── */}
         <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
-          <Gift className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
+          <Gift className="w-5 h-5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
           <span
-            className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
+            className="text-[11px] text-[#4f4f4f] leading-none truncate w-full text-center"
             style={labelStyle}
           >
             Beneficios
@@ -109,9 +112,9 @@ export function BottomNav() {
 
         {/* ── Mis créditos ───────────────────────────── */}
         <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
-          <HandCoins className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
+          <HandCoins className="w-5 h-5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
           <span
-            className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
+            className="text-[11px] text-[#4f4f4f] leading-none truncate w-full text-center"
             style={labelStyle}
           >
             Mis créditos
@@ -120,9 +123,9 @@ export function BottomNav() {
 
         {/* ── Opciones ───────────────────────────────── */}
         <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
-          <Settings className="w-5 h-5 text-[#828282] shrink-0" strokeWidth={1.5} />
+          <Settings className="w-5 h-5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
           <span
-            className="text-[10px] text-[#828282] leading-none truncate w-full text-center"
+            className="text-[11px] text-[#4f4f4f] leading-none truncate w-full text-center"
             style={labelStyle}
           >
             Opciones

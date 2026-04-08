@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react"
 import { ShieldCheck, CalendarClock, FolderOpen } from "lucide-react"
+import { AbbrTooltip } from "./abbr-tooltip"
 
 /* ─── Figma asset URLs (valid 7 days) ─── */
 const CAR_CIRCLE = "https://www.figma.com/api/mcp/asset/2945b6c7-331b-4c5c-a344-6524e1fe1d81"
@@ -12,7 +13,7 @@ const ELLIPSE_SHADOW = "https://www.figma.com/api/mcp/asset/c304ee9a-15fd-47b4-b
 
 /* Design reference dimensions */
 const CARD_W = 295  // px, from Figma
-const CARD_H = 326  // px, from Figma
+const CARD_H = 380  // bumped from 326 to give rows breathing room
 const DOTS_H = 28   // px reserved at bottom for indicator dots
 
 const cardBg: React.CSSProperties = {
@@ -186,7 +187,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 
       {/* ── Neomorphic card background (starts at ~45px) ── */}
       <div
-        className="absolute top-[45px] left-0 right-0 h-[235px] rounded-[12px]"
+        className="absolute top-[45px] left-0 right-0 h-[295px] rounded-[12px]"
         style={cardBg}
       >
         <div className="absolute inset-0 rounded-[12px]" style={cardInset} />
@@ -214,108 +215,128 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       </div>
 
       {/* ── Plate + TAG badge ── */}
-      <div className="absolute top-[104px] left-1/2 -translate-x-1/2 flex items-start justify-between w-[247px]">
+      <div className="absolute top-[112px] left-1/2 -translate-x-1/2 flex items-start justify-between w-[247px]">
         <div className="w-[181px]">
           <p
             className="text-[20px] text-black leading-tight"
-            style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}
+            style={{ fontWeight: 700 }}
           >
             {vehicle.plate}
           </p>
           <p
-            className="text-[10px] text-[#6d6d6d] leading-snug overflow-hidden text-ellipsis whitespace-nowrap"
-            style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}
+            className="text-[12px] text-[#4f4f4f] leading-snug overflow-hidden text-ellipsis whitespace-nowrap"
+            style={{ fontWeight: 500 }}
           >
             {vehicle.model}
           </p>
         </div>
         {vehicle.tagActive ? (
-          <div className="bg-[#e7fffa] border border-[#00f1c7] rounded-[8px] px-[3px] h-[15px] flex items-center justify-center w-[66px] mt-1 shrink-0">
-            <span className="text-[9px] text-[#049e83] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
-              TAG ACTIVO
+          <div className="bg-[#e7fffa] border border-[#00f1c7] rounded-[8px] px-[3px] h-[18px] flex items-center justify-center w-[78px] mt-1 shrink-0">
+            <span className="text-[11px] text-[#006257] whitespace-nowrap" style={{ fontWeight: 600 }}>
+              <AbbrTooltip term="TAG" desc="Dispositivo electrónico de peaje" className="border-b-0" /> ACTIVO
             </span>
           </div>
         ) : (
-          <div className="bg-[#d1d1d1] border border-[#5d5d5d] rounded-[8px] px-[3px] h-[15px] flex items-center justify-center w-[72px] mt-1 shrink-0">
-            <span className="text-[9px] text-[#5d5d5d] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
-              TAG INACTIVO
+          <div className="bg-[#d1d1d1] border border-[#5d5d5d] rounded-[8px] px-[3px] h-[18px] flex items-center justify-center w-[86px] mt-1 shrink-0">
+            <span className="text-[11px] text-[#4f4f4f] whitespace-nowrap" style={{ fontWeight: 600 }}>
+              <AbbrTooltip term="TAG" desc="Dispositivo electrónico de peaje" className="border-b-0" /> INACTIVO
             </span>
           </div>
         )}
       </div>
 
+      {/* ── Divider ── */}
+      <div className="absolute top-[160px] left-1/2 -translate-x-1/2 w-[247px] h-px bg-[#ededed]" />
+
       {/* ── Pico y placa ── */}
-      <div className="absolute top-[154px] left-1/2 -translate-x-1/2 flex items-center gap-2 w-[245px] bg-white/10 rounded px-2 h-[32px]">
+      <div className="absolute top-[172px] left-1/2 -translate-x-1/2 flex items-center gap-2 w-[247px] rounded px-1 h-[36px]">
         <img src={PICO_ICON} alt="" className="h-6 w-[14px] shrink-0 object-contain" />
         <div className="flex items-center justify-between flex-1 min-w-0">
           <div className="flex flex-col gap-[2px] shrink-0">
-            <span className="text-[8px] text-[#6d6d6d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
-              Pico y placa
-            </span>
-            <span className="text-[10px] text-[#6d6d6d]" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
+            <AbbrTooltip
+              term="Pico y placa"
+              desc="Restricción vehicular diaria según el último dígito de la placa"
+              className="text-[11px] text-[#4f4f4f]"
+            >
+              <span style={{ fontWeight: 500 }}>Pico y placa</span>
+            </AbbrTooltip>
+            <span className="text-[11px] text-[#4f4f4f]" style={{ fontWeight: 700 }}>
               BOGOTÁ
             </span>
           </div>
           {vehicle.hasRestriction ? (
-            <span className="text-[11px] text-[#d62d30] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 900 }}>
+            <span className="text-[11px] text-[#d62d30] whitespace-nowrap" style={{ fontWeight: 900 }}>
               TIENES RESTRICCIÓN
             </span>
           ) : (
-            <span className="text-[11px] text-[#00be9c] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 900 }}>
-              LIBRE TRANSITO
+            <span className="text-[11px] text-[#00be9c] whitespace-nowrap" style={{ fontWeight: 900 }}>
+              LIBRE TRÁNSITO
             </span>
           )}
         </div>
       </div>
 
+      {/* ── Divider ── */}
+      <div className="absolute top-[218px] left-1/2 -translate-x-1/2 w-[247px] h-px bg-[#ededed]" />
+
       {/* ── SOAT + RTM ── */}
-      <div className="absolute top-[198px] left-1/2 -translate-x-1/2 flex items-center justify-between w-[247px]">
+      <div className="absolute top-[230px] left-1/2 -translate-x-1/2 flex items-center justify-between w-[247px]">
         <div className="flex items-center gap-1.5 w-[115px]">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#6d6d6d] shrink-0" strokeWidth={1.5} />
-          <span className="text-[9px] text-[#6d6d6d] uppercase tracking-wide shrink-0">SOAT</span>
-          <span className="text-[12px] text-black" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
+          <ShieldCheck className="w-3.5 h-3.5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <AbbrTooltip
+            term="SOAT"
+            desc="Seguro Obligatorio de Accidentes de Tránsito"
+            className="text-[11px] text-[#4f4f4f] uppercase tracking-wide shrink-0"
+          />
+          <span className="sr-only">:</span>
+          <span className="text-[12px] text-black" style={{ fontWeight: 700 }}>
             {vehicle.soatDate}
           </span>
         </div>
         <div className="flex items-center gap-1.5 w-[115px]">
-          <CalendarClock className="w-3.5 h-3.5 text-[#6d6d6d] shrink-0" strokeWidth={1.5} />
-          <span className="text-[9px] text-[#6d6d6d] uppercase tracking-wide shrink-0">RTM</span>
-          <span className="text-[12px] text-black" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
+          <CalendarClock className="w-3.5 h-3.5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <AbbrTooltip
+            term="RTM"
+            desc="Revisión Técnico Mecánica"
+            className="text-[11px] text-[#4f4f4f] uppercase tracking-wide shrink-0"
+          />
+          <span className="sr-only">:</span>
+          <span className="text-[12px] text-black" style={{ fontWeight: 700 }}>
             {vehicle.rtmDate}
           </span>
         </div>
       </div>
 
       {/* ── Recorrido + Guantera ── */}
-      <div className="absolute top-[224px] left-1/2 -translate-x-1/2 flex items-stretch gap-4 w-[247px] h-[31px]">
-        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1 px-1" style={{ border: "0.5px solid #00f1c7" }}>
-          <img src={RECORRIDO_ICON} alt="" className="w-3.5 h-3.5 object-contain shrink-0" />
-          <div className="flex flex-col items-center leading-none">
-            <span className="text-[8px] text-[#6d6d6d] whitespace-nowrap" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 500 }}>
-              Recorrido de hoy:
+      <div className="absolute top-[266px] left-1/2 -translate-x-1/2 flex items-stretch gap-3 w-[247px] h-[38px]">
+        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1.5 px-2" style={{ border: "0.5px solid #00f1c7" }}>
+          <img src={RECORRIDO_ICON} alt="" className="w-4 h-4 object-contain shrink-0" />
+          <div className="flex flex-col items-start leading-tight min-w-0">
+            <span className="text-[10px] text-[#4f4f4f] whitespace-nowrap" style={{ fontWeight: 500 }}>
+              Recorrido hoy
             </span>
-            <span className="text-[12px] text-black" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 700 }}>
+            <span className="text-[12px] text-black" style={{ fontWeight: 700 }}>
               {vehicle.todayDistance}
             </span>
           </div>
         </div>
-        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1 px-1" style={{ border: "0.5px solid #00f1c7" }}>
-          <FolderOpen className="w-3.5 h-3.5 text-[#6d6d6d] shrink-0" strokeWidth={1.5} />
-          <span className="text-[12px] text-black" style={{ fontFamily: '"Museo Sans", sans-serif', fontWeight: 300 }}>
+        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1.5 px-2" style={{ border: "0.5px solid #00f1c7" }}>
+          <FolderOpen className="w-4 h-4 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <span className="text-[12px] text-black" style={{ fontWeight: 500 }}>
             Guantera
           </span>
         </div>
       </div>
 
       {/* ── Ver detalles ── */}
-      <div className="absolute top-[268px] left-1/2 -translate-x-1/2 w-[104px] h-[22px] bg-[#e7fffa] rounded-[11px] flex items-center justify-center" style={{ border: "0.5px solid #00f1c7" }}>
-        <span className="text-[12px] text-[#006257] font-semibold" style={{ fontFamily: '"Inter", sans-serif', letterSpacing: "-0.015em" }}>
+      <div className="absolute top-[328px] left-1/2 -translate-x-1/2 w-[128px] h-[26px] bg-[#e7fffa] rounded-[13px] flex items-center justify-center" style={{ border: "0.5px solid #00f1c7" }}>
+        <span className="text-[12px] text-[#006257] font-semibold" style={{ letterSpacing: "-0.015em" }}>
           Ver detalles
         </span>
       </div>
 
       {/* ── Card shadow/reflection ── */}
-      <div className="absolute top-[301px] left-1/2 -translate-x-1/2 h-3 w-[210px]">
+      <div className="absolute top-[354px] left-1/2 -translate-x-1/2 h-3 w-[210px]">
         <img src={ELLIPSE_SHADOW} alt="" className="w-full h-full object-contain opacity-60" />
       </div>
     </div>

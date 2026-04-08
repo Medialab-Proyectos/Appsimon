@@ -59,10 +59,7 @@ export function ShortcutGrid() {
             style={btnStyle}
           >
             {shortcut.icon}
-            <span
-              className="text-[12px] text-[#4f4f4f] font-medium leading-4 text-center"
-              style={{ fontFamily: '"Inter", sans-serif' }}
-            >
+            <span className="text-[12px] text-[#4f4f4f] font-medium leading-4 text-center">
               {shortcut.label}
             </span>
           </button>
