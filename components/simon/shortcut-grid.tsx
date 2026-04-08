@@ -50,16 +50,35 @@ const btnStyle: React.CSSProperties = {
 
 export function ShortcutGrid() {
   return (
-    <div className="shrink-0 px-6 pt-3 pb-2">
-      <div className="grid grid-cols-3 gap-3">
+    <div
+      className="shrink-0 px-6"
+      style={{
+        paddingTop: "clamp(6px, 1.2vh, 12px)",
+        paddingBottom: "clamp(4px, 0.8vh, 8px)",
+      }}
+    >
+      <div
+        className="grid grid-cols-3"
+        style={{ gap: "clamp(8px, 1.4vh, 12px)" }}
+      >
         {shortcuts.map((shortcut, index) => (
           <button
             key={index}
-            className="flex flex-col items-center justify-center h-[88px] rounded-[12px] gap-2 p-2 active:opacity-80 transition-opacity"
-            style={btnStyle}
+            className="flex flex-col items-center justify-center rounded-[12px] active:opacity-80 transition-opacity"
+            style={{
+              ...btnStyle,
+              height: "clamp(58px, 10vh, 88px)",
+              gap: "clamp(2px, 0.6vh, 8px)",
+              padding: "clamp(4px, 0.8vh, 8px)",
+            }}
           >
-            {shortcut.icon}
-            <span className="text-[12px] text-[#4f4f4f] font-medium leading-4 text-center">
+            <span className="shrink-0" style={{ transform: "scale(clamp(0.8, 1, 1))" }}>
+              {shortcut.icon}
+            </span>
+            <span
+              className="text-[#4f4f4f] font-medium text-center leading-tight"
+              style={{ fontSize: "clamp(10px, 1.5vh, 12px)" }}
+            >
               {shortcut.label}
             </span>
           </button>

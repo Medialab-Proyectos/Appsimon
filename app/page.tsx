@@ -27,7 +27,10 @@ export default function SimonApp() {
       >
         <TopHeader />
         <div className="flex-1 flex flex-col min-h-0">
-          <VehicleCarousel />
+          {/* Carousel gets priority: min-height ensures the card renders at natural size when possible */}
+          <div className="flex-1 min-h-[360px] flex flex-col">
+            <VehicleCarousel />
+          </div>
           <ShortcutGrid />
         </div>
       </div>
