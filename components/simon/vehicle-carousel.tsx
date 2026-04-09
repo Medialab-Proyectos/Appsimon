@@ -17,11 +17,11 @@ const CARD_H = 380  // bumped from 326 to give rows breathing room
 const DOTS_H = 28   // px reserved at bottom for indicator dots
 
 const cardBg: React.CSSProperties = {
-  background: "radial-gradient(ellipse at 85% 4%, #ededed 0%, #fefefe 93%)",
-  boxShadow: "6.08px 6.08px 14.6px rgba(0,0,0,0.1)",
+  background: "var(--neo-bg)",
+  boxShadow: "var(--neo-shadow-card)",
 }
 const cardInset: React.CSSProperties = {
-  boxShadow: "inset 0px -2.4px 2.4px rgba(112,111,111,0.25), inset 0px 2.4px 2.4px white",
+  boxShadow: "var(--neo-inset)",
 }
 
 interface Vehicle {
@@ -172,7 +172,7 @@ export function VehicleCarousel() {
             key={i}
             onClick={() => setActiveIndex(i)}
             className={`rounded-full transition-all duration-300 ${
-              i === activeIndex ? "w-5 h-1.5 bg-[#00f1c7]" : "w-1.5 h-1.5 bg-[#d1d1d1]"
+              i === activeIndex ? "w-5 h-1.5 bg-[#00f1c7]" : "w-1.5 h-1.5 [background:var(--simon-divider)]"
             }`}
           />
         ))}
@@ -195,13 +195,11 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 
       {/* ── Car image (overflows above card) ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[142px] h-[104px]">
-        {/* Ellipse circle — PNG image with built-in shadow, not clipped */}
         <div className="absolute left-[31px] top-[12px] w-[81px] h-[81px]">
           <div className="absolute" style={{ inset: "-10.51% -25.52% -25.52% -10.51%" }}>
             <img src={CAR_CIRCLE} alt="" className="block max-w-none w-full h-full" />
           </div>
         </div>
-        {/* Car image — clipped to 67×56 box, positioned exactly as Figma exports */}
         <div className="absolute left-[38px] top-[24px] w-[67px] h-[56px]">
           <div className="absolute inset-0 overflow-hidden">
             <img
@@ -218,27 +216,27 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       <div className="absolute top-[112px] left-1/2 -translate-x-1/2 flex items-start justify-between w-[247px]">
         <div className="w-[181px]">
           <p
-            className="text-[20px] text-black leading-tight"
-            style={{ fontWeight: 700 }}
+            className="text-[20px] leading-tight"
+            style={{ fontWeight: 700, color: "var(--simon-text-strong)" }}
           >
             {vehicle.plate}
           </p>
           <p
-            className="text-[12px] text-[#4f4f4f] leading-snug overflow-hidden text-ellipsis whitespace-nowrap"
-            style={{ fontWeight: 500 }}
+            className="text-[12px] leading-snug overflow-hidden text-ellipsis whitespace-nowrap"
+            style={{ fontWeight: 500, color: "var(--simon-text)" }}
           >
             {vehicle.model}
           </p>
         </div>
         {vehicle.tagActive ? (
-          <div className="bg-[#e7fffa] border border-[#00f1c7] rounded-[8px] px-[3px] h-[18px] flex items-center justify-center w-[78px] mt-1 shrink-0">
-            <span className="text-[11px] text-[#006257] whitespace-nowrap" style={{ fontWeight: 600 }}>
+          <div className="rounded-[8px] px-[3px] h-[18px] flex items-center justify-center w-[78px] mt-1 shrink-0" style={{ background: "var(--simon-tag-bg)", border: "1px solid var(--simon-tag-border)" }}>
+            <span className="text-[11px] whitespace-nowrap" style={{ fontWeight: 600, color: "var(--simon-tag-text)" }}>
               <AbbrTooltip term="TAG" desc="Dispositivo electrónico de peaje" className="border-b-0" /> ACTIVO
             </span>
           </div>
         ) : (
-          <div className="bg-[#d1d1d1] border border-[#5d5d5d] rounded-[8px] px-[3px] h-[18px] flex items-center justify-center w-[86px] mt-1 shrink-0">
-            <span className="text-[11px] text-[#4f4f4f] whitespace-nowrap" style={{ fontWeight: 600 }}>
+          <div className="rounded-[8px] px-[3px] h-[18px] flex items-center justify-center w-[86px] mt-1 shrink-0" style={{ background: "var(--simon-divider)", border: "1px solid var(--simon-text)" }}>
+            <span className="text-[11px] whitespace-nowrap" style={{ fontWeight: 600, color: "var(--simon-text)" }}>
               <AbbrTooltip term="TAG" desc="Dispositivo electrónico de peaje" className="border-b-0" /> INACTIVO
             </span>
           </div>
@@ -246,7 +244,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       </div>
 
       {/* ── Divider ── */}
-      <div className="absolute top-[160px] left-1/2 -translate-x-1/2 w-[247px] h-px bg-[#ededed]" />
+      <div className="absolute top-[160px] left-1/2 -translate-x-1/2 w-[247px] h-px" style={{ background: "var(--simon-divider)" }} />
 
       {/* ── Pico y placa ── */}
       <div className="absolute top-[172px] left-1/2 -translate-x-1/2 flex items-center gap-2 w-[247px] rounded px-1 h-[36px]">
@@ -256,20 +254,20 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
             <AbbrTooltip
               term="Pico y placa"
               desc="Restricción vehicular diaria según el último dígito de la placa"
-              className="text-[11px] text-[#4f4f4f]"
+              className="text-[11px]"
             >
-              <span style={{ fontWeight: 500 }}>Pico y placa</span>
+              <span style={{ fontWeight: 500, color: "var(--simon-text)" }}>Pico y placa</span>
             </AbbrTooltip>
-            <span className="text-[11px] text-[#4f4f4f]" style={{ fontWeight: 700 }}>
+            <span className="text-[11px]" style={{ fontWeight: 700, color: "var(--simon-text)" }}>
               BOGOTÁ
             </span>
           </div>
           {vehicle.hasRestriction ? (
-            <span className="text-[11px] text-[#d62d30] whitespace-nowrap" style={{ fontWeight: 900 }}>
+            <span className="text-[11px] whitespace-nowrap" style={{ fontWeight: 900, color: "var(--simon-restriction)" }}>
               TIENES RESTRICCIÓN
             </span>
           ) : (
-            <span className="text-[11px] text-[#00be9c] whitespace-nowrap" style={{ fontWeight: 900 }}>
+            <span className="text-[11px] whitespace-nowrap" style={{ fontWeight: 900, color: "var(--simon-free)" }}>
               LIBRE TRÁNSITO
             </span>
           )}
@@ -277,31 +275,31 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
       </div>
 
       {/* ── Divider ── */}
-      <div className="absolute top-[218px] left-1/2 -translate-x-1/2 w-[247px] h-px bg-[#ededed]" />
+      <div className="absolute top-[218px] left-1/2 -translate-x-1/2 w-[247px] h-px" style={{ background: "var(--simon-divider)" }} />
 
       {/* ── SOAT + RTM ── */}
       <div className="absolute top-[230px] left-1/2 -translate-x-1/2 flex items-center justify-between w-[247px]">
         <div className="flex items-center gap-1.5 w-[115px]">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <ShieldCheck className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} style={{ color: "var(--simon-text)" }} />
           <AbbrTooltip
             term="SOAT"
             desc="Seguro Obligatorio de Accidentes de Tránsito"
-            className="text-[11px] text-[#4f4f4f] uppercase tracking-wide shrink-0"
+            className="text-[11px] uppercase tracking-wide shrink-0 [color:var(--simon-text)]"
           />
           <span className="sr-only">:</span>
-          <span className="text-[12px] text-black" style={{ fontWeight: 700 }}>
+          <span className="text-[12px]" style={{ fontWeight: 700, color: "var(--simon-text-strong)" }}>
             {vehicle.soatDate}
           </span>
         </div>
         <div className="flex items-center gap-1.5 w-[115px]">
-          <CalendarClock className="w-3.5 h-3.5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <CalendarClock className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} style={{ color: "var(--simon-text)" }} />
           <AbbrTooltip
             term="RTM"
             desc="Revisión Técnico Mecánica"
-            className="text-[11px] text-[#4f4f4f] uppercase tracking-wide shrink-0"
+            className="text-[11px] uppercase tracking-wide shrink-0 [color:var(--simon-text)]"
           />
           <span className="sr-only">:</span>
-          <span className="text-[12px] text-black" style={{ fontWeight: 700 }}>
+          <span className="text-[12px]" style={{ fontWeight: 700, color: "var(--simon-text-strong)" }}>
             {vehicle.rtmDate}
           </span>
         </div>
@@ -309,28 +307,28 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
 
       {/* ── Recorrido + Guantera ── */}
       <div className="absolute top-[266px] left-1/2 -translate-x-1/2 flex items-stretch gap-3 w-[247px] h-[38px]">
-        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1.5 px-2" style={{ border: "0.5px solid #00f1c7" }}>
+        <div className="flex-1 rounded-[8px] flex items-center justify-center gap-1.5 px-2" style={{ background: "var(--simon-bg)", border: "0.5px solid var(--simon-card-border)" }}>
           <img src={RECORRIDO_ICON} alt="" className="w-4 h-4 object-contain shrink-0" />
           <div className="flex flex-col items-start leading-tight min-w-0">
-            <span className="text-[10px] text-[#4f4f4f] whitespace-nowrap" style={{ fontWeight: 500 }}>
+            <span className="text-[10px] whitespace-nowrap" style={{ fontWeight: 500, color: "var(--simon-text)" }}>
               Recorrido hoy
             </span>
-            <span className="text-[12px] text-black" style={{ fontWeight: 700 }}>
+            <span className="text-[12px]" style={{ fontWeight: 700, color: "var(--simon-text-strong)" }}>
               {vehicle.todayDistance}
             </span>
           </div>
         </div>
-        <div className="flex-1 bg-white rounded-[8px] flex items-center justify-center gap-1.5 px-2" style={{ border: "0.5px solid #00f1c7" }}>
-          <FolderOpen className="w-4 h-4 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
-          <span className="text-[12px] text-black" style={{ fontWeight: 500 }}>
+        <div className="flex-1 rounded-[8px] flex items-center justify-center gap-1.5 px-2" style={{ background: "var(--simon-bg)", border: "0.5px solid var(--simon-card-border)" }}>
+          <FolderOpen className="w-4 h-4 shrink-0" strokeWidth={1.5} style={{ color: "var(--simon-text)" }} />
+          <span className="text-[12px]" style={{ fontWeight: 500, color: "var(--simon-text-strong)" }}>
             Guantera
           </span>
         </div>
       </div>
 
       {/* ── Ver detalles ── */}
-      <div className="absolute top-[328px] left-1/2 -translate-x-1/2 w-[128px] h-[26px] bg-[#e7fffa] rounded-[13px] flex items-center justify-center" style={{ border: "0.5px solid #00f1c7" }}>
-        <span className="text-[12px] text-[#006257] font-semibold" style={{ letterSpacing: "-0.015em" }}>
+      <div className="absolute top-[328px] left-1/2 -translate-x-1/2 w-[128px] h-[26px] rounded-[13px] flex items-center justify-center" style={{ background: "var(--simon-tag-bg)", border: "0.5px solid var(--simon-tag-border)" }}>
+        <span className="text-[12px] font-semibold" style={{ letterSpacing: "-0.015em", color: "var(--simon-tag-text)" }}>
           Ver detalles
         </span>
       </div>

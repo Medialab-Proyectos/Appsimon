@@ -78,11 +78,11 @@ export function AbbrTooltip({ term, desc, className, children, showIcon = true }
         align="center"
         sideOffset={8}
         collisionPadding={12}
-        className="w-auto max-w-[260px] p-3 text-[13px] leading-snug text-[#1f1f1f] shadow-lg"
+        className="w-auto max-w-[260px] p-3 text-[13px] leading-snug shadow-lg [color:var(--simon-text-strong)] [background:var(--simon-bg)]"
         onOpenAutoFocus={(e) => e.preventDefault()}
         onPointerDownOutside={() => setOpen(false)}
       >
-        <p className="font-semibold text-[11px] text-[#006257] uppercase tracking-wide mb-0.5">
+        <p className="font-semibold text-[11px] uppercase tracking-wide mb-0.5 [color:var(--simon-tag-text)]">
           {term}
         </p>
         <p>{desc}</p>

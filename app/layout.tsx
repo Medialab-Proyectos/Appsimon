@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
 const museoSans = localFont({
@@ -49,9 +50,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es-CO" className={museoSans.variable}>
+    <html lang="es-CO" className={museoSans.variable} suppressHydrationWarning>
       <body className="font-sans antialiased" style={{ fontFamily: 'var(--font-museo-sans), sans-serif' }}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

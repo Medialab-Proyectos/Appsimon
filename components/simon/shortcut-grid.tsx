@@ -17,36 +17,30 @@ interface ShortcutItem {
 
 const shortcuts: ShortcutItem[] = [
   {
-    icon: <MapPin className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
+    icon: <MapPin className="w-6 h-6" strokeWidth={1.5} style={{ color: "var(--simon-accent)" }} />,
     label: "Localizacion",
   },
   {
-    icon: <CircleDollarSign className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
+    icon: <CircleDollarSign className="w-6 h-6" strokeWidth={1.5} style={{ color: "var(--simon-accent)" }} />,
     label: "Simon Pay",
   },
   {
-    icon: <FolderOpen className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
+    icon: <FolderOpen className="w-6 h-6" strokeWidth={1.5} style={{ color: "var(--simon-accent)" }} />,
     label: "Guantera",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
+    icon: <ShieldCheck className="w-6 h-6" strokeWidth={1.5} style={{ color: "var(--simon-accent)" }} />,
     label: "Seguros",
   },
   {
-    icon: <Handshake className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
+    icon: <Handshake className="w-6 h-6" strokeWidth={1.5} style={{ color: "var(--simon-accent)" }} />,
     label: "Convenios",
   },
   {
-    icon: <Wrench className="w-6 h-6 text-[#00be9c]" strokeWidth={1.5} />,
+    icon: <Wrench className="w-6 h-6" strokeWidth={1.5} style={{ color: "var(--simon-accent)" }} />,
     label: "Asistencias",
   },
 ]
-
-const btnStyle: React.CSSProperties = {
-  background: "radial-gradient(ellipse at 85% 4%, #ededed 0%, #fefefe 93%)",
-  boxShadow:
-    "6.08px 6.08px 14.6px rgba(0,0,0,0.1), inset 0px -2.4px 2.4px rgba(112,111,111,0.25), inset 0px 2.4px 2.4px white",
-}
 
 export function ShortcutGrid() {
   return (
@@ -64,7 +58,8 @@ export function ShortcutGrid() {
             type="button"
             className="flex flex-col items-center justify-center rounded-[12px] transition-opacity active:opacity-80"
             style={{
-              ...btnStyle,
+              background: "var(--neo-bg)",
+              boxShadow: "var(--neo-shadow)",
               height: "clamp(50px, 8.5vh, 88px)",
               gap: "clamp(2px, 0.5vh, 8px)",
               padding: "clamp(4px, 0.6vh, 8px)",
@@ -74,8 +69,8 @@ export function ShortcutGrid() {
               {shortcut.icon}
             </span>
             <span
-              className="text-center font-medium leading-tight text-[#4f4f4f]"
-              style={{ fontSize: "clamp(10px, 1.5vh, 12px)" }}
+              className="text-center font-medium leading-tight"
+              style={{ fontSize: "clamp(10px, 1.5vh, 12px)", color: "var(--simon-text)" }}
             >
               {shortcut.label}
             </span>

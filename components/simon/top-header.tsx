@@ -1,50 +1,46 @@
 "use client"
 
 import { Headphones, CircleUserRound } from "lucide-react"
+import { ThemeToggle } from "./theme-toggle"
 
 const SIMON_LOGO_TOP = "https://www.figma.com/api/mcp/asset/006c3a59-a3eb-41e2-8c84-1de1dd747aa9"
 const SIMON_LOGO_BOTTOM = "https://www.figma.com/api/mcp/asset/08256b12-670a-4fb6-bc57-45e58d261fb1"
 
-const neomorphicBtn: React.CSSProperties = {
-  background: "radial-gradient(ellipse at 85% 4%, #ededed 0%, #fefefe 93%)",
-  boxShadow:
-    "6px 6px 14.5px rgba(0,0,0,0.1), inset 0px -2.4px 2.4px rgba(112,111,111,0.25), inset 0px 2.4px 2.4px white",
-}
-
 export function TopHeader() {
   return (
     <div
-      className="shrink-0 bg-[#fafafa]"
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
+      className="shrink-0"
+      style={{ paddingTop: "env(safe-area-inset-top)", background: "var(--simon-bg)" }}
     >
       {/* Greeting + Icons row */}
       <div className="flex items-center justify-between px-6 pt-3 pb-1">
         <div>
           <p
-            className="text-[15px] text-[#4f4f4f] leading-snug"
-            style={{ fontWeight: 500 }}
+            className="text-[15px] leading-snug"
+            style={{ fontWeight: 500, color: "var(--simon-text)" }}
           >
             Bienvenido/a
           </p>
           <p
-            className="text-[18px] text-[#4f4f4f] leading-snug"
-            style={{ fontWeight: 700 }}
+            className="text-[18px] leading-snug"
+            style={{ fontWeight: 700, color: "var(--simon-text-strong)" }}
           >
             Alejandra Díaz
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
           <button
             aria-label="Soporte y ayuda"
             className="w-11 h-11 rounded-full flex items-center justify-center"
           >
-            <Headphones className="w-[20px] h-[20px] text-[#4f4f4f]" strokeWidth={1.5} />
+            <Headphones className="w-[20px] h-[20px]" strokeWidth={1.5} style={{ color: "var(--simon-text)" }} />
           </button>
           <button
             aria-label="Mi cuenta"
             className="w-11 h-11 rounded-full flex items-center justify-center"
           >
-            <CircleUserRound className="w-[20px] h-[20px] text-[#4f4f4f]" strokeWidth={1.5} />
+            <CircleUserRound className="w-[20px] h-[20px]" strokeWidth={1.5} style={{ color: "var(--simon-text)" }} />
           </button>
         </div>
       </div>
@@ -64,8 +60,12 @@ export function TopHeader() {
           />
         </div>
         <button
-          className="px-4 h-8 text-[12px] font-medium text-[#0f6b58] rounded-xl whitespace-nowrap"
-          style={neomorphicBtn}
+          className="px-4 h-8 text-[12px] font-medium rounded-xl whitespace-nowrap"
+          style={{
+            background: "var(--neo-bg)",
+            boxShadow: "var(--neo-shadow)",
+            color: "var(--simon-accent)",
+          }}
         >
           Agregar vehículo
         </button>

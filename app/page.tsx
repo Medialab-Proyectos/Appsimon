@@ -29,7 +29,7 @@ export default function SimonApp() {
 
   /* ── Home screen ── */
   return (
-    <div className="relative overflow-hidden bg-[#fafafa]" style={{ height: "100dvh" }}>
+    <div className="relative overflow-hidden" style={{ height: "100dvh", background: "var(--simon-bg)" }}>
       <div
         className="absolute inset-0 flex flex-col"
         style={{

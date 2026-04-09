@@ -194,6 +194,58 @@
     0 8px 12px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* ── Simon app tokens ── */
+:root {
+  --simon-bg: #fafafa;
+  --simon-text: #4f4f4f;
+  --simon-text-strong: #000000;
+  --simon-accent: #00be9c;
+  --simon-accent-bright: #00f1c7;
+  --simon-tag-bg: #e7fffa;
+  --simon-tag-text: #006257;
+  --simon-tag-border: #00f1c7;
+  --simon-restriction: #d62d30;
+  --simon-free: #00be9c;
+  --simon-divider: #ededed;
+  --simon-card-border: #00f1c7;
+
+  /* neomorphic surface */
+  --neo-bg: radial-gradient(ellipse at 85% 4%, #ededed 0%, #fefefe 93%);
+  --neo-shadow:
+    6.08px 6.08px 14.6px rgba(0,0,0,0.1),
+    inset 0px -2.4px 2.4px rgba(112,111,111,0.25),
+    inset 0px 2.4px 2.4px rgba(255,255,255,1);
+  --neo-shadow-card:
+    6.08px 6.08px 14.6px rgba(0,0,0,0.1);
+  --neo-inset:
+    inset 0px -2.4px 2.4px rgba(112,111,111,0.25),
+    inset 0px 2.4px 2.4px rgba(255,255,255,1);
+}
+
+.dark {
+  --simon-bg: #121716;
+  --simon-text: #a8b5b0;
+  --simon-text-strong: #e4ebe8;
+  --simon-tag-bg: #0d2b24;
+  --simon-tag-text: #5dffd4;
+  --simon-tag-border: #1a6b56;
+  --simon-restriction: #ff6b6b;
+  --simon-free: #00f1c7;
+  --simon-divider: #2a3530;
+  --simon-card-border: #1a6b56;
+
+  --neo-bg: radial-gradient(ellipse at 85% 4%, #1e2724 0%, #151b19 93%);
+  --neo-shadow:
+    4px 4px 12px rgba(0,0,0,0.5),
+    inset 0px -2px 2px rgba(0,0,0,0.3),
+    inset 0px 2px 2px rgba(255,255,255,0.04);
+  --neo-shadow-card:
+    4px 4px 12px rgba(0,0,0,0.5);
+  --neo-inset:
+    inset 0px -2px 2px rgba(0,0,0,0.3),
+    inset 0px 2px 2px rgba(255,255,255,0.04);
+}
+
 /* Prevent overscroll on mobile */
 html, body {
   overscroll-behavior: none;

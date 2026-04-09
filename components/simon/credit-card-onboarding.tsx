@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react"
 import { X } from "lucide-react"
 
-const CREDIT_CARD_EXTERNAL_URL = "https://www.finanzauto.com.co/tarjeta-de-credito"
+const CREDIT_CARD_EXTERNAL_URL = "https://simonweb-five.vercel.app/v4"
 
 const slides = [
   { src: "/onboarding/on1.png", alt: "Presentación tarjeta de crédito Simon" },
