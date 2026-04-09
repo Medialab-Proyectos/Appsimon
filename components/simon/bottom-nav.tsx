@@ -1,6 +1,7 @@
 "use client"
 
 import { CreditCard, Gift, HandCoins, Settings } from "lucide-react"
+import type { OnboardingType } from "./onboarding-flow"
 
 /* Active home button asset from Figma */
 const HOME_ACTIVE = "https://www.figma.com/api/mcp/asset/df3e37bf-ee57-426b-8b52-e99e731db5a8"
@@ -28,7 +29,11 @@ const labelStyle: React.CSSProperties = {
   fontWeight: 700,
 }
 
-export function BottomNav() {
+interface BottomNavProps {
+  onNavAction?: (type: OnboardingType) => void
+}
+
+export function BottomNav({ onNavAction }: BottomNavProps) {
   return (
     /*
      * Outer anchor: absolutely positioned, spans full width.
@@ -36,7 +41,7 @@ export function BottomNav() {
      */
     <div
       className="absolute left-0 right-0 flex justify-center pointer-events-none"
-      style={{ bottom: "max(28px, calc(28px + env(safe-area-inset-bottom)))" }}
+      style={{ bottom: "max(clamp(12px, 3.5vh, 28px), calc(clamp(12px, 3.5vh, 28px) + env(safe-area-inset-bottom)))" }}
     >
       {/*
        * Nav bar:
@@ -55,9 +60,10 @@ export function BottomNav() {
         {/* ── T crédito ──────────────────────────────── */}
         <button
           aria-label="Tarjeta de crédito"
-          className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0"
+          onClick={() => onNavAction?.("tarjeta-credito")}
+          className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0 rounded-[10px] transition-all duration-150 active:scale-90 active:bg-black/[0.06]"
         >
-          <CreditCard className="w-5 h-5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
+          <CreditCard className="w-5 h-5 text-[#4f4f4f] shrink-0 transition-colors duration-150 group-active:text-[#00be9c]" strokeWidth={1.5} />
           <abbr
             title="Tarjeta de crédito"
             className="text-[11px] text-[#4f4f4f] leading-none truncate w-full text-center no-underline"
@@ -111,7 +117,7 @@ export function BottomNav() {
         </button>
 
         {/* ── Mis créditos ───────────────────────────── */}
-        <button className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
+        <button onClick={() => onNavAction?.("mis-creditos")} className="flex-1 flex flex-col items-center justify-center gap-0.5 min-w-0">
           <HandCoins className="w-5 h-5 text-[#4f4f4f] shrink-0" strokeWidth={1.5} />
           <span
             className="text-[11px] text-[#4f4f4f] leading-none truncate w-full text-center"
