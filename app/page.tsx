@@ -7,8 +7,9 @@ import { OnboardingFlow, type OnboardingType } from "@/components/simon/onboardi
 import { ShortcutGrid } from "@/components/simon/shortcut-grid"
 import { TopHeader } from "@/components/simon/top-header"
 import { VehicleCarousel } from "@/components/simon/vehicle-carousel"
+import { InsuranceMarketplace } from "@/components/simon/insurance"
 
-type Screen = "home" | "credit-card"
+type Screen = "home" | "credit-card" | "insurance"
 
 export default function SimonApp() {
   const [screen, setScreen] = useState<Screen>("home")
@@ -27,6 +28,11 @@ export default function SimonApp() {
     return <CreditCardOnboarding onClose={() => setScreen("home")} />
   }
 
+  /* ── Insurance marketplace: full-screen overlay ── */
+  if (screen === "insurance") {
+    return <InsuranceMarketplace onClose={() => setScreen("home")} />
+  }
+
   /* ── Home screen ── */
   return (
     <div className="relative overflow-hidden" style={{ height: "100dvh", background: "var(--simon-bg)" }}>
@@ -42,7 +48,7 @@ export default function SimonApp() {
           <div className="flex flex-1 flex-col" style={{ minHeight: "clamp(240px, 46vh, 360px)" }}>
             <VehicleCarousel />
           </div>
-          <ShortcutGrid />
+          <ShortcutGrid onInsuranceTap={() => setScreen("insurance")} />
         </div>
       </div>
 
